@@ -1,3 +1,4 @@
+import {setupRecording} from './recording.js';
 import {buildRequest, handoffToChatGPT} from './workflow.js';
 const $=id=>document.getElementById(id);
 const defaultPrompt="# やってほしいこと\n参加者情報に記載のメンバーによる会議の文字起こしをもとに、最高の議事録を作成してください。\n\n# 役割\n会議で決まったこと、解像度の上がったことをテキストにまとめて、プロジェクト（事業）の進行を後押しするプロの書記担当者。\n\n# 最高の議事録とは\n- 決定事項とアクションプラン（誰が、いつまでに、何をするか）をテキスト化し、参加者全員の認識を揃える。\n- 議論によって解像度の上がったタスクの内容を余さずまとめ、メンバーが取り掛かる際の補助にする。\n\n# 制約条件\n- 会議記録にない内容を創作しない。\n- ビジネス文書として丁寧かつ簡潔に記述する。\n- アクションプランに担当者、タスク内容、期限を必ず明記する。\n- MTG内で期限の言及がなければ「本日18:00まで」と記載する。\n- タスクの内容に関して議論されたことがあれば補足として記載する。\n- 参加者は画面から渡される参加者情報を使用する。担当者が不明な場合は「未定」とする。\n\n# 出力フォーマット\n【議事録】（会議名_日付）\n━━━━━━━━━━━━━━\n■参加者\n（参加者名）\n\n■決定事項と背景\n（決まったことの内容を簡潔に）\n・詳細：\n・背景：\n\n■アクションプラン（誰が・いつまでに）\n【1】（タスク内容）\n・担当：\n・期限：\n・補足：\n\n【2】（タスク内容）\n…\n\n━━━━━━━━━━━━━━\n以上\n\n# LINE送付・スマホ閲覧のための最適化\n- 表（テーブル）形式を使用せず、箇条書きで構成する。\n- 重要なポイントや区切りには記号（■、●、・など）を使用する。";
@@ -41,3 +42,5 @@ for(const id of ['title','date','participants','transcript','minutes'])$(id).add
 $('prompt').oninput=()=>{try{localStorage.setItem('shirす-prompt',$('prompt').value);}catch{notice('プロンプト設定を保存できませんでした。');}};
 window.addEventListener('beforeunload',e=>{if(!leavingForChatGPT&&(($('transcript').value||$('minutes').value)&&$('saveState').textContent==='未保存')){e.preventDefault();e.returnValue='';}});
 render();notice($('transcript').value?'作業中の内容を復元しました。ChatGPTの回答を貼り付けて続けられます。':'初回は「会議を録音」の設定をしてください。APIキーは不要です。');
+
+setupRecording({notice,changed,saveDraft,output});

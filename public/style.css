@@ -5,3 +5,5 @@
 .quickstart ol{padding-left:18px;line-height:2}.quickstart details{font-size:12px;line-height:1.9}.quickstart p{line-height:1.9}#pasteMinutes{align-self:flex-start;margin-bottom:14px}
 
 .brand span{font-size:22px;white-space:nowrap}@media(max-width:800px){.brand span{font-size:20px}}
+
+.auto-record{margin:24px 0;padding:20px;background:#f0f6f2;border:1px solid #cbded2;border-radius:9px}.auto-record h3{margin-top:12px;color:#366c51}.auto-record p{font-size:11px;line-height:1.9}.auto-record .record-warning{color:#7a6a45}.auto-record .primary{width:auto;flex:1}.auto-record #recordStatus{font-weight:600}.manual-mode>summary{padding:12px 0}.audio-actions{flex-wrap:wrap}#audioDownloads a{display:inline-block;margin:7px;color:#33785f;font-size:12px}
