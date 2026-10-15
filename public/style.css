@@ -3,3 +3,5 @@
 .chatgpt-link{display:block;text-align:center;margin:16px 0;color:#33785f;font-size:13px;text-decoration:none;padding:10px;border:1px solid #dce6df;border-radius:6px}#requestText{min-height:180px}.output>label{margin-bottom:12px}
 
 .quickstart ol{padding-left:18px;line-height:2}.quickstart details{font-size:12px;line-height:1.9}.quickstart p{line-height:1.9}#pasteMinutes{align-self:flex-start;margin-bottom:14px}
+
+.brand span{font-size:22px;white-space:nowrap}@media(max-width:800px){.brand span{font-size:20px}}
